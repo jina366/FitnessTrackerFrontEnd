@@ -3,7 +3,7 @@ export function saveToLocalStorage(token) {
 }
 
 export function getTokenFromLocalStorage() {
-  const oldToken = localStorage.getItem('token');
+  let oldToken = localStorage.getItem('token');
 
   if (!oldToken) {
     oldToken = '';
