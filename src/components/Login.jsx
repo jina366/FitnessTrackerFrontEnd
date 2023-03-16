@@ -1,22 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import { registerAccount } from '../apiAdapters';
+import { loginAccount } from '../apiAdapters';
 import { saveToLocalStorage } from '../utils/localStorage';
 
-const Register = ({ setToken }) => {
+const Login = ({ setToken }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
 
-  async function makeProfile(username, password) {
+  async function getLogin(username, password) {
     try {
-      const result = await registerAccount(username, password);
+      const result = await loginAccount(username, password);
 
       if (result.token !== undefined) {
         setToken(result.token);
         saveToLocalStorage(result.token);
         setUsername('');
         setPassword('');
-        setConfirmPassword('');
       }
     } catch (error) {
       console.log(error);
@@ -25,12 +23,12 @@ const Register = ({ setToken }) => {
 
   return (
     <div>
-      <h1>Register</h1>
+      <h1>Login</h1>
       <div>
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            makeProfile(username, password);
+            getLogin(username, password);
           }}
         >
           <h3>Username</h3>
@@ -60,26 +58,11 @@ const Register = ({ setToken }) => {
             }}
           />
 
-          <h3>Confirm Password</h3>
-          <input
-            name="confirmPassword"
-            type="password"
-            value={confirmPassword}
-            autoComplete="confirmPassword"
-            minLength="8"
-            required
-            onChange={(e) => {
-              setConfirmPassword(e.target.value);
-            }}
-          />
-
-          {confirmPassword === password && password !== '' ? (
-            <button type="submit">Submit</button>
-          ) : null}
+          <button type="submit">Submit</button>
         </form>
       </div>
     </div>
   );
 };
 
-export default Register;
+export default Login;
