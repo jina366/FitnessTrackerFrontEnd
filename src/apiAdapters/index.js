@@ -1,11 +1,11 @@
-const BASE = "http://fitnesstrac-kr.herokuapp.com/api";
+const BASE = 'https://fitnesstrackr.fly.dev/api';
 
 export const registerAccount = async (username, password) => {
   try {
     const response = await fetch(`${BASE}/users/register`, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         username: username,
@@ -24,9 +24,9 @@ export const registerAccount = async (username, password) => {
 export const loginAccount = async (username, password) => {
   try {
     const response = await fetch(`${BASE}/users/login`, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         username: username,
@@ -46,12 +46,29 @@ export const getAllRoutines = async () => {
   try {
     const response = await fetch(`${BASE}/routines`, {
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     });
 
     const result = await response.json();
-    return result
+    return result;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const getMyUser = async (token) => {
+  try {
+    const response = await fetch(`${BASE}/users/me`, {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    const result = await response.json();
+    console.log(result);
+    return result;
   } catch (error) {
     console.error(error);
   }
