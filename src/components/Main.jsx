@@ -24,7 +24,7 @@ const Main = () => {
         />
         <Route path="/users/login" element={<Login setToken={setToken} />} />
         <Route path="/routines" element={<Routines />} />
-        <Route path="/my-routines" element={<MyRoutines />} />
+        <Route path="/my-routines" element={<MyRoutines token={token} />} />
         <Route path="*" element={null} />
       </Routes>
     </div>

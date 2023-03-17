@@ -67,7 +67,7 @@ export const getMyUser = async (token) => {
     });
 
     const result = await response.json();
-    console.log(result);
+    console.log('my user', result);
     return result;
   } catch (error) {
     console.error(error);
