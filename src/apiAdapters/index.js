@@ -73,3 +73,24 @@ export const getMyUser = async (token) => {
     console.error(error);
   }
 };
+
+export const updateRoutine = async (token, isPublic, name, goal, routineId) => {
+try {
+    const response = await fetch(`${BASE}/routines/${routineId}`, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify({
+            isPublic: isPublic,
+            name: name,
+            goal: goal
+        })
+    })
+    const result = await response.json();
+    return result;
+} catch (error) {
+    console.error(error)
+}
+}

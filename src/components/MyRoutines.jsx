@@ -1,14 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { getMyUser } from '../apiAdapters';
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { getMyUser } from "../apiAdapters";
 
-const MyRoutines = ({ token }) => {
+const MyRoutines = ({ token, setMyRoutineEdit }) => {
   const [routine, setRoutine] = useState([]);
+  const navigate = useNavigate();
 
   async function getRoutines() {
     try {
       let result = null;
 
-      console.log('token', token);
+      console.log("token", token);
       if (token) {
         result = await getMyUser(token);
         setRoutine(result.allMyRoutines);
@@ -49,7 +51,19 @@ const MyRoutines = ({ token }) => {
                 })}
               </div>
               <div className="my-routine-buttons">
-                <button>Edit</button>
+                <button
+                  onClick={() => {
+                    setMyRoutineEdit({
+                      name: post.name,
+                      goal: post.goal,
+                      isPublic: post.isPublic,
+                      routineId: post.id
+                    });
+                    navigate("/my-routines/update");
+                  }}
+                >
+                  Edit
+                </button>
                 <button>Delete</button>
               </div>
             </div>
