@@ -53,7 +53,6 @@ const Login = ({ setToken }) => {
             minLength="8"
             required
             onChange={(e) => {
-              console.log(password);
               setPassword(e.target.value);
             }}
           />

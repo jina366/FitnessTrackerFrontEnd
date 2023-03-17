@@ -19,7 +19,6 @@ const MyRoutines = ({ token, setMyRoutineEdit }) => {
     try {
       let result = null;
 
-      console.log('token', token);
       if (token) {
         result = await getMyUser(token);
         setRoutine(result.allMyRoutines);
@@ -48,7 +47,6 @@ const MyRoutines = ({ token, setMyRoutineEdit }) => {
     try {
       const result = await getAllActivities();
 
-      console.log(result);
       setActivities(result);
     } catch (error) {
       console.log(error);
@@ -102,7 +100,6 @@ const MyRoutines = ({ token, setMyRoutineEdit }) => {
                 >
                   Add Activity to Routine
                 </button>
-                {console.log('before component', post.showActivityForm)}
                 {showActivity[post.id] ? (
                   <AddActivityToRoutine
                     activities={activities}

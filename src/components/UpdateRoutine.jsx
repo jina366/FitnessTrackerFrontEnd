@@ -1,21 +1,25 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { updateRoutine } from "../apiAdapters";
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { updateRoutine } from '../apiAdapters';
 
 const UpdateRoutine = ({ token, myRoutineEdit, setMyRoutineEdit }) => {
   const [isPublic, setIsPublic] = useState(myRoutineEdit.isPublic);
   const [name, setName] = useState(myRoutineEdit.name);
   const [goal, setGoal] = useState(myRoutineEdit.goal);
   const navigate = useNavigate();
-  const routineId = myRoutineEdit.routineId
+  const routineId = myRoutineEdit.routineId;
 
   async function updateMyRoutine(isPublic, name, goal) {
     try {
-    console.log("token here", token)
-      const result = await updateRoutine(token, isPublic, name, goal, routineId);
-      console.log("result", result);
+      const result = await updateRoutine(
+        token,
+        isPublic,
+        name,
+        goal,
+        routineId
+      );
       setMyRoutineEdit({});
-      navigate("/my-routines");
+      navigate('/my-routines');
     } catch (error) {
       console.log(error);
     }

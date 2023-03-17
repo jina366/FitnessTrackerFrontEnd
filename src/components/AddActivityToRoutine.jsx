@@ -19,8 +19,6 @@ function AddActivityToRoutine({
       duration
     );
 
-    console.log('add activity result', result);
-
     if (result.id) {
       setSelectedActivity(1);
       setCount(0);
@@ -44,7 +42,6 @@ function AddActivityToRoutine({
         <select
           name="add-activity"
           onChange={(evt) => {
-            console.log(evt.target.value);
             setSelectedActivity(evt.target.value);
           }}
         >
