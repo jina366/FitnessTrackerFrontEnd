@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavbarUser } from './';
+import { Link } from 'react-router-dom';
 
 const Navbar = ({ setToken, token }) => {
   return (
@@ -7,10 +8,20 @@ const Navbar = ({ setToken, token }) => {
       <div id="navbarLogo">Logo</div>
       <div id="navbarTabs">
         <div id="navbarTabs-container">
-          <h2>Home</h2>
-          <h2>Routines</h2>
-          {token ? <h2>My Routines</h2>: null}
-          <h2>Activities</h2>
+          <Link to="/">
+            <h2>Home</h2>
+          </Link>
+          <Link to="/routines">
+            <h2>Routines</h2>
+          </Link>
+          {token ? (
+            <Link to="my-routines">
+              <h2>My Routines</h2>
+            </Link>
+          ) : null}
+          <Link to="/activities">
+            <h2>Activities</h2>
+          </Link>
         </div>
       </div>
       <div id="navbarUser">
