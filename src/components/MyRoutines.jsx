@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getMyUser, deleteRoutine, getAllActivities } from '../apiAdapters';
+import { getMyUser, deleteRoutine, getAllActivities, deleteActivityFromRoutine } from '../apiAdapters';
 import { AddActivityToRoutine } from './';
 
 const MyRoutines = ({ token, setMyRoutineEdit }) => {
@@ -47,6 +47,15 @@ const MyRoutines = ({ token, setMyRoutineEdit }) => {
       setActivities(result);
     } catch (error) {
       console.log(error);
+    }
+  }
+
+  async function removeActivity(routineActivityId) {
+    try {
+      const result = await deleteActivityFromRoutine(token, routineActivityId)
+      return result
+    } catch (error) {
+      console.log(error)
     }
   }
 
@@ -104,6 +113,9 @@ const MyRoutines = ({ token, setMyRoutineEdit }) => {
                       <h5>{activity.description}</h5>
                       <h5>Duration: {activity.duration}</h5>
                       <h5>Count: {activity.count}</h5>
+                      <button type="submit" onClick={() => {
+                        removeActivity(activity.routineActivityId)
+                      }}>Delete</button>
                     </div>
                   );
                 })}
