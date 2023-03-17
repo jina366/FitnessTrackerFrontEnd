@@ -1,16 +1,20 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { getMyUser, deleteRoutine } from "../apiAdapters";
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { getMyUser, deleteRoutine, getAllActivities } from '../apiAdapters';
+import { AddActivityToRoutine } from './';
 
 const MyRoutines = ({ token, setMyRoutineEdit }) => {
   const [routine, setRoutine] = useState([]);
+  const [activities, setActivities] = useState([]);
+  const [showActivity, setShowActivity] = useState({});
+
   const navigate = useNavigate();
 
   async function getRoutines() {
     try {
       let result = null;
 
-      console.log("token", token);
+      console.log('token', token);
       if (token) {
         result = await getMyUser(token);
         setRoutine(result.allMyRoutines);
@@ -35,9 +39,24 @@ const MyRoutines = ({ token, setMyRoutineEdit }) => {
     }
   }
 
+  async function getActivities() {
+    try {
+      const result = await getAllActivities();
+
+      console.log(result);
+      setActivities(result);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   useEffect(() => {
     getRoutines();
   }, [token]);
+
+  useEffect(() => {
+    getActivities();
+  }, []);
 
   return (
     <div id="full-routines-page">
@@ -45,7 +64,7 @@ const MyRoutines = ({ token, setMyRoutineEdit }) => {
         <h1>My Routines</h1>
         <button
           onClick={() => {
-            navigate("/my-routines/new");
+            navigate('/my-routines/new');
           }}
         >
           Create New Routine
@@ -59,6 +78,25 @@ const MyRoutines = ({ token, setMyRoutineEdit }) => {
                 <h2>Name: {post.name}</h2>
                 <h3>Goal: {post.goal}</h3>
                 <h3>Creator: {post.creatorName}</h3>
+                <button
+                  onClick={() => {
+                    setShowActivity({
+                      ...showActivity,
+                      [post.id]: !showActivity[post.id],
+                    });
+                  }}
+                >
+                  Add Activity to Routine
+                </button>
+                {console.log('before component', post.showActivityForm)}
+                {showActivity[post.id] ? (
+                  <AddActivityToRoutine
+                    activities={activities}
+                    routineId={post.id}
+                    setShowActivity={setShowActivity}
+                    showActivity={showActivity}
+                  />
+                ) : null}
                 {post.activities.map((activity, idx) => {
                   return (
                     <div id="routine-activity-container" key={`activity${idx}`}>
@@ -79,7 +117,7 @@ const MyRoutines = ({ token, setMyRoutineEdit }) => {
                       isPublic: post.isPublic,
                       routineId: post.id,
                     });
-                    navigate("/my-routines/update");
+                    navigate('/my-routines/update');
                   }}
                 >
                   Edit
