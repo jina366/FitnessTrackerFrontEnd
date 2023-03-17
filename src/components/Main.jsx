@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Navbar, Register, Login, Routines, MyRoutines, UpdateRoutine } from './';
+import { Navbar, Register, Login, Routines, MyRoutines, UpdateRoutine, CreateRoutine } from './';
 import { Routes, Route } from 'react-router-dom';
 import { getTokenFromLocalStorage } from '../utils/localStorage';
 
@@ -26,6 +26,7 @@ const Main = () => {
         <Route path="/users/login" element={<Login setToken={setToken} />} />
         <Route path="/routines" element={<Routines />} />
         <Route path="/my-routines" element={<MyRoutines token={token} setMyRoutineEdit={setMyRoutineEdit}/>} />
+        <Route path="/my-routines/new" element={<CreateRoutine token={token}/>}/>
         <Route path="/my-routines/update" element={<UpdateRoutine token={token} myRoutineEdit={myRoutineEdit} setMyRoutineEdit={setMyRoutineEdit}/>} />
         <Route path="*" element={null} />
       </Routes>

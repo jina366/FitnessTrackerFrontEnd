@@ -1,11 +1,11 @@
-const BASE = 'https://fitnesstrackr.fly.dev/api';
+const BASE = "https://fitnesstrackr.fly.dev/api";
 
 export const registerAccount = async (username, password) => {
   try {
     const response = await fetch(`${BASE}/users/register`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         username: username,
@@ -24,9 +24,9 @@ export const registerAccount = async (username, password) => {
 export const loginAccount = async (username, password) => {
   try {
     const response = await fetch(`${BASE}/users/login`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         username: username,
@@ -46,7 +46,7 @@ export const getAllRoutines = async () => {
   try {
     const response = await fetch(`${BASE}/routines`, {
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
     });
 
@@ -61,13 +61,13 @@ export const getMyUser = async (token) => {
   try {
     const response = await fetch(`${BASE}/users/me`, {
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
     });
 
     const result = await response.json();
-    console.log('my user', result);
+    console.log("my user", result);
     return result;
   } catch (error) {
     console.error(error);
@@ -75,22 +75,61 @@ export const getMyUser = async (token) => {
 };
 
 export const updateRoutine = async (token, isPublic, name, goal, routineId) => {
-try {
+  try {
     const response = await fetch(`${BASE}/routines/${routineId}`, {
-        method: 'PATCH',
-        headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`
-        },
-        body: JSON.stringify({
-            isPublic: isPublic,
-            name: name,
-            goal: goal
-        })
-    })
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        isPublic: isPublic,
+        name: name,
+        goal: goal,
+      }),
+    });
     const result = await response.json();
     return result;
-} catch (error) {
-    console.error(error)
-}
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const deleteRoutine = async (token, routineId) => {
+  try {
+    const response = await fetch(`${BASE}/routines/${routineId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const result = await response.json();
+    console.log("deleting routine",result)
+    return result
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const createRoutine = async (token, name, goal, isPublic) => {
+    try {
+        const response = await fetch(`${BASE}/routines`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({
+                name: name,
+                goal: goal,
+                isPublic: isPublic
+            })
+        })
+        const result = await response.json();
+        console.log("creating routine",result)
+        return result;
+    } catch (error) {
+        console.error(error)
+    }
 }

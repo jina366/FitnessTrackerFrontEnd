@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { getMyUser } from "../apiAdapters";
+import { getMyUser, deleteRoutine } from "../apiAdapters";
 
 const MyRoutines = ({ token, setMyRoutineEdit }) => {
   const [routine, setRoutine] = useState([]);
@@ -21,6 +21,20 @@ const MyRoutines = ({ token, setMyRoutineEdit }) => {
     }
   }
 
+  async function removeRoutine(post) {
+    try {
+      const result = await deleteRoutine(token, post.id);
+      if (result.id) {
+        const routineCopy = [...routine].filter((r, idx) => {
+          return r.id !== post.id;
+        });
+        setRoutine(routineCopy);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   useEffect(() => {
     getRoutines();
   }, [token]);
@@ -29,7 +43,13 @@ const MyRoutines = ({ token, setMyRoutineEdit }) => {
     <div id="full-routines-page">
       <div id="my-routine-header">
         <h1>My Routines</h1>
-        <button>Create New Routine</button>
+        <button
+          onClick={() => {
+            navigate("/my-routines/new");
+          }}
+        >
+          Create New Routine
+        </button>
       </div>
       <div id="routine-page-container">
         {routine.map((post, idx) => {
@@ -57,14 +77,20 @@ const MyRoutines = ({ token, setMyRoutineEdit }) => {
                       name: post.name,
                       goal: post.goal,
                       isPublic: post.isPublic,
-                      routineId: post.id
+                      routineId: post.id,
                     });
                     navigate("/my-routines/update");
                   }}
                 >
                   Edit
                 </button>
-                <button>Delete</button>
+                <button
+                  onClick={() => {
+                    removeRoutine(post);
+                  }}
+                >
+                  Delete
+                </button>
               </div>
             </div>
           );
