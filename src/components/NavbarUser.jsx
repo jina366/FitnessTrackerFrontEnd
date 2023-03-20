@@ -3,7 +3,7 @@ import { saveToLocalStorage } from '../utils/localStorage';
 
 function NavbarUser({ setToken }) {
   return (
-    <div id="navbar-user-container">
+    <div className="navbar-user" id="navbar-user-container">
       <button
         onClick={() => {
           setToken('');

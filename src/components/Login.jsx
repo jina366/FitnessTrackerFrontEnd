@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { loginAccount } from '../apiAdapters';
 import { saveToLocalStorage } from '../utils/localStorage';
+import { useNavigate } from 'react-router-dom';
 
-const Login = ({ setToken }) => {
+const Login = ({ setToken, token }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   async function getLogin(username, password) {
     try {
@@ -15,14 +17,21 @@ const Login = ({ setToken }) => {
         saveToLocalStorage(result.token);
         setUsername('');
         setPassword('');
+        navigate(-1);
       }
     } catch (error) {
       console.log(error);
     }
   }
 
+  useEffect(() => {
+    if (token) {
+      navigate('/');
+    }
+  }, [token]);
+
   return (
-    <div>
+    <div className="center-form">
       <h1>Login</h1>
       <div>
         <form

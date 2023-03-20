@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavbarUser } from './';
+import { NavbarUser, NavbarNoUser } from './';
 import { Link } from 'react-router-dom';
 
 const Navbar = ({ setToken, token }) => {
@@ -25,7 +25,7 @@ const Navbar = ({ setToken, token }) => {
         </div>
       </div>
       <div id="navbarUser">
-        <NavbarUser setToken={setToken} />
+        {token ? <NavbarUser setToken={setToken} /> : <NavbarNoUser />}
       </div>
     </div>
   );

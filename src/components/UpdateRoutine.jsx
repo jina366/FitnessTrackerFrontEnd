@@ -26,7 +26,7 @@ const UpdateRoutine = ({ token, myRoutineEdit, setMyRoutineEdit }) => {
   }
 
   return (
-    <div>
+    <div className="center-form">
       <form
         onSubmit={(e) => {
           e.preventDefault();

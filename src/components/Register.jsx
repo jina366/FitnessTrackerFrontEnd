@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { registerAccount } from '../apiAdapters';
 import { saveToLocalStorage } from '../utils/localStorage';
+import { useNavigate } from 'react-router-dom';
 
-const Register = ({ setToken }) => {
+const Register = ({ setToken, token }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const navigate = useNavigate();
 
   async function makeProfile(username, password) {
     try {
@@ -23,8 +25,15 @@ const Register = ({ setToken }) => {
     }
   }
 
+  useEffect(() => {
+    console.log('token register', token);
+    if (token) {
+      navigate('/');
+    }
+  }, [token]);
+
   return (
-    <div>
+    <div className="center-form">
       <h1>Register</h1>
       <div>
         <form

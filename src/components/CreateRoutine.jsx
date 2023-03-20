@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { createRoutine } from "../apiAdapters";
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { createRoutine } from '../apiAdapters';
 
-const CreateRoutine = ({token}) => {
-  const [name, setName] = useState("");
-  const [goal, setGoal] = useState("");
+const CreateRoutine = ({ token }) => {
+  const [name, setName] = useState('');
+  const [goal, setGoal] = useState('');
   const [isPublic, setIsPublic] = useState(false);
   const navigate = useNavigate();
 
@@ -12,24 +12,25 @@ const CreateRoutine = ({token}) => {
     try {
       const result = await createRoutine(token, name, goal, isPublic);
       if (result.id) {
-        setName("");
-        setGoal("");
+        setName('');
+        setGoal('');
         setIsPublic(false);
-        navigate("/my-routines");
+        navigate('/my-routines');
       }
     } catch (error) {
       console.log(error);
     }
   }
 
-  return( 
-  <div>
-    <form 
+  return (
+    <div className="center-form">
+      <form
         onSubmit={(e) => {
-            e.preventDefault();
-            postNewRoutine()
-        }}>
-    <h1>Public:</h1>
+          e.preventDefault();
+          postNewRoutine();
+        }}
+      >
+        <h1>Public:</h1>
         <input
           name="public"
           type="checkbox"
@@ -57,9 +58,9 @@ const CreateRoutine = ({token}) => {
           }}
         />
         <button type="submit">Submit</button>
-    </form>
-  </div>)
-
+      </form>
+    </div>
+  );
 };
 
 export default CreateRoutine;

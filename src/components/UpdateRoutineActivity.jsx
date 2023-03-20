@@ -24,7 +24,7 @@ function UpdateRoutineActivity({
   }
 
   return (
-    <div id="update-routine-activity-parent">
+    <div className="center-form" id="update-routine-activity-parent">
       <h1>Update Routine Activity</h1>
       <form
         onSubmit={(e) => {

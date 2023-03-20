@@ -24,7 +24,7 @@ const Main = () => {
   }, []);
 
   useEffect(() => {
-    console.log(token);
+    console.log('main token', token);
   }, [token]);
 
   return (
@@ -33,9 +33,12 @@ const Main = () => {
       <Routes>
         <Route
           path="/users/register"
-          element={<Register setToken={setToken} />}
+          element={<Register setToken={setToken} token={token} />}
         />
-        <Route path="/users/login" element={<Login setToken={setToken} />} />
+        <Route
+          path="/users/login"
+          element={<Login setToken={setToken} token={token} />}
+        />
         <Route path="/routines" element={<Routines />} />
         <Route
           path="/my-routines"
@@ -71,8 +74,11 @@ const Main = () => {
             />
           }
         />
-        <Route path="/activities" element={<Activities token={token}/>}/>
-        <Route path="/activities/new" element={<CreateActivity token={token}/>}/>
+        <Route path="/activities" element={<Activities token={token} />} />
+        <Route
+          path="/activities/new"
+          element={<CreateActivity token={token} />}
+        />
         <Route path="*" element={null} />
       </Routes>
     </div>
