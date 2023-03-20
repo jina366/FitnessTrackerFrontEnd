@@ -8,6 +8,8 @@ import {
   UpdateRoutine,
   CreateRoutine,
   UpdateRoutineActivity,
+  Activities,
+  CreateActivity,
 } from './';
 import { Routes, Route } from 'react-router-dom';
 import { getTokenFromLocalStorage } from '../utils/localStorage';
@@ -69,6 +71,8 @@ const Main = () => {
             />
           }
         />
+        <Route path="/activities" element={<Activities token={token}/>}/>
+        <Route path="/activities/new" element={<CreateActivity token={token}/>}/>
         <Route path="*" element={null} />
       </Routes>
     </div>
