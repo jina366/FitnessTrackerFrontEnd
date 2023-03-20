@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   getMyUser,
   deleteRoutine,
   getAllActivities,
   deleteActivityFromRoutine,
-} from '../apiAdapters';
-import { AddActivityToRoutine } from './';
+} from "../apiAdapters";
+import { AddActivityToRoutine } from "./";
 
 const MyRoutines = ({ token, setMyRoutineEdit, setMyRoutineActivityEdit }) => {
   const [routine, setRoutine] = useState([]);
@@ -76,7 +76,7 @@ const MyRoutines = ({ token, setMyRoutineEdit, setMyRoutineActivityEdit }) => {
         <h1>My Routines</h1>
         <button
           onClick={() => {
-            navigate('/my-routines/new');
+            navigate("/my-routines/new");
           }}
         >
           Create New Routine
@@ -108,38 +108,44 @@ const MyRoutines = ({ token, setMyRoutineEdit, setMyRoutineActivityEdit }) => {
                     showActivity={showActivity}
                   />
                 ) : null}
-                {post.activities.map((activity, idx) => {
-                  return (
-                    <div id="routine-activity-container" key={`activity${idx}`}>
-                      <h4>Name: {activity.name}</h4>
-                      <h5>{activity.description}</h5>
-                      <h5>Duration: {activity.duration}</h5>
-                      <h5>Count: {activity.count}</h5>
-                      <button
-                        onClick={() => {
-                          setMyRoutineActivityEdit({
-                            name: activity.name,
-                            description: activity.description,
-                            duration: activity.duration,
-                            count: activity.count,
-                            routineActivityId: activity.routineActivityId,
-                          });
-                          navigate('/my-routines/update-routine-activity');
-                        }}
+                <div className="card" id="routine-activity-card">
+                  <h3>Activities:</h3>
+                  {post.activities.map((activity, idx) => {
+                    return (
+                      <div
+                        id="routine-activity-container"
+                        key={`activity${idx}`}
                       >
-                        Edit
-                      </button>
-                      <button
-                        type="submit"
-                        onClick={() => {
-                          removeActivity(activity.routineActivityId);
-                        }}
-                      >
-                        Delete
-                      </button>
-                    </div>
-                  );
-                })}
+                        <h4>Name: {activity.name}</h4>
+                        <h5>{activity.description}</h5>
+                        <h5>Duration: {activity.duration}</h5>
+                        <h5>Count: {activity.count}</h5>
+                        <button
+                          onClick={() => {
+                            setMyRoutineActivityEdit({
+                              name: activity.name,
+                              description: activity.description,
+                              duration: activity.duration,
+                              count: activity.count,
+                              routineActivityId: activity.routineActivityId,
+                            });
+                            navigate("/my-routines/update-routine-activity");
+                          }}
+                        >
+                          Edit
+                        </button>
+                        <button
+                          type="submit"
+                          onClick={() => {
+                            removeActivity(activity.routineActivityId);
+                          }}
+                        >
+                          Delete
+                        </button>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
               <div className="my-routine-buttons">
                 <button
@@ -150,7 +156,7 @@ const MyRoutines = ({ token, setMyRoutineEdit, setMyRoutineActivityEdit }) => {
                       isPublic: post.isPublic,
                       routineId: post.id,
                     });
-                    navigate('/my-routines/update');
+                    navigate("/my-routines/update");
                   }}
                 >
                   Edit

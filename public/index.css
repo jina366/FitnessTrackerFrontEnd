@@ -1,76 +1,123 @@
 :root {
-    --darkOrange: #E07F2B;
-    --peach: #FFC28E;
-    --blue: #A1C3FF;
-    --gray: #C7C3A9;
-    --yellow: #FFFADB;
+  --darkOrange: #e07f2b;
+  --peach: #ffc28e;
+  --blue: #a1c3ff;
+  --gray: #c7c3a9;
+  --yellow: #fffadb;
 }
 
 * {
-    box-sizing: border-box;
-    padding: 0px;
-    margin: 0px;
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
 }
 
 button {
-    padding: 2px 4px;
+  padding: 2px 4px;
 }
 
 a {
-    text-decoration:none;
-    color: inherit;
+  text-decoration: none;
+  color: inherit;
 }
 
-
-
 #navbar {
-    background-color: var(--blue);
-    color: white;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-items: center;
-    justify-content: space-between;
-    flex-grow: 1;
-    max-height: 10%;
-    min-height: 40px;
+  background-color: var(--blue);
+  color: white;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  flex-grow: 1;
+  max-height: 10%;
+  min-height: 40px;
 }
 
 #navbarTabs-container {
-    display: flex;
-    flex-direction: row;
-    gap: 15px;
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
 }
 
-
 #main {
-    height: 100vh;
-    width: 100vw;
-    background-color: var(--yellow);
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--yellow);
 }
 
 .center-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 15%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 15%;
 }
 
 #routine-page-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 30px;
+  min-height: 0px;
 }
-#routine-container {
-    display: flex;
-    flex-direction: column;
-    flex-basis: 400px;
-    max-height: 500px;
-    overflow-y: scroll;
+#routine-container::-webkit-scrollbar {
+  background: transparent; /* Chrome/Safari/Webkit */
+  width: 0px;
 }
 
-#my-routine-header {
+#routine-container {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 400px;
+  max-width: 400px;
+  max-height: 500px;
+  overflow-y: scroll;
+  padding: 20px;
+  border-radius: 8px;
+  gap: 15px;
+  background-color: var(--peach);
+  color: black;
+  flex-grow: 1;
+}
+#routine-activity-card {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(255, 255, 255, 0.4);
+  gap: 10px;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+#my-routine-header, #activities-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#full-routines-page {
+  overflow-y: scroll;
+  min-height: 0px;
+  background-color: var(--yellow);
+}
+
+.my-routine-container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+#activities-full-page {
+  display: flex;
+  flex-direction: column;
+}
+
+#activities-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+#activity-container {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
 }

@@ -21,15 +21,17 @@ const Activities = ({token}) => {
   },[])
 
   return(
-    <div>
+    <div id='activities-full-page'>
+        <div id='activities-header'>
         <h1>Activities</h1>
         {token ? <button onClick={() => {
             navigate('/activities/new')
         }}>Create New Activity</button> : null}
-        <div>
+        </div>
+        <div id='activities-container'>
             {activities.map((activity, idx) => {
                 return(
-                    <div key={`ActivityPage${idx}`}>
+                    <div id='activity-container' key={`ActivityPage${idx}`}>
                     <h2>{activity.name}</h2>
                     <p>{activity.description}</p>
                     </div>

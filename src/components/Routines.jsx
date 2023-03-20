@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { getAllRoutines } from '../apiAdapters';
+import React, { useState, useEffect } from "react";
+import { getAllRoutines } from "../apiAdapters";
 
 const Routines = () => {
   const [routine, setRoutine] = useState([]);
@@ -27,16 +27,19 @@ const Routines = () => {
               <h2>Name: {post.name}</h2>
               <h3>Goal: {post.goal}</h3>
               <h3>Creator: {post.creatorName}</h3>
-              {post.activities.map((activity, idx) => {
-                return (
-                  <div id="routine-activity-container" key={`activity${idx}`}>
-                    <h4>Name: {activity.name}</h4>
-                    <h5>{activity.description}</h5>
-                    <h5>Duration: {activity.duration}</h5>
-                    <h5>Count: {activity.count}</h5>
-                  </div>
-                );
-              })}
+              <div className='card' id="routine-activity-card">
+                <h3>Activities:</h3>
+                {post.activities.map((activity, idx) => {
+                  return (
+                    <div id="routine-activity-container" key={`activity${idx}`}>
+                      <h4>Name: {activity.name}</h4>
+                      <h5>{activity.description}</h5>
+                      <h5>Duration: {activity.duration}</h5>
+                      <h5>Count: {activity.count}</h5>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           );
         })}
