@@ -27,41 +27,46 @@ const UpdateRoutine = ({ token, myRoutineEdit, setMyRoutineEdit }) => {
 
   return (
     <div className="center-form">
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          updateMyRoutine(isPublic, name, goal);
-        }}
-      >
-        <h1>Public:</h1>
-        <input
-          name="public"
-          type="checkbox"
-          value={isPublic}
-          onChange={(e) => {
-            setIsPublic(e.target.value);
+      <div className="form-parent">
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            updateMyRoutine(isPublic, name, goal);
           }}
-        />
-        <h1>Name:</h1>
-        <input
-          name="name"
-          type="text"
-          value={name}
-          onChange={(e) => {
-            setName(e.target.value);
-          }}
-        />
-        <h1>Goal:</h1>
-        <input
-          name="goal"
-          type="text"
-          value={goal}
-          onChange={(e) => {
-            setGoal(e.target.value);
-          }}
-        />
-        <button type="submit">Submit</button>
-      </form>
+        >
+          <h1>Edit Routine</h1>
+          <div className="checkbox-parent">
+            <h2>Public:</h2>
+            <input
+              name="public"
+              type="checkbox"
+              value={isPublic}
+              onChange={(e) => {
+                setIsPublic(e.target.value);
+              }}
+            />
+          </div>
+          <h2>Name:</h2>
+          <input
+            name="name"
+            type="text"
+            value={name}
+            onChange={(e) => {
+              setName(e.target.value);
+            }}
+          />
+          <h2>Goal:</h2>
+          <input
+            name="goal"
+            type="text"
+            value={goal}
+            onChange={(e) => {
+              setGoal(e.target.value);
+            }}
+          />
+          <button type="submit">Submit</button>
+        </form>
+      </div>
     </div>
   );
 };
