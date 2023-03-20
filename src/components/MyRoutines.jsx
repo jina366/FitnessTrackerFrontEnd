@@ -118,8 +118,8 @@ const MyRoutines = ({ token, setMyRoutineEdit, setMyRoutineActivityEdit }) => {
                       >
                         <h4>Name: {activity.name}</h4>
                         <h5>{activity.description}</h5>
-                        <h5>Duration: {activity.duration}</h5>
-                        <h5>Count: {activity.count}</h5>
+                        <h5>Duration (mins): {activity.duration}</h5>
+                        <h5>Count (reps): {activity.count}</h5>
                         <button
                           onClick={() => {
                             setMyRoutineActivityEdit({
