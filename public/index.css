@@ -60,6 +60,12 @@ a {
     padding: 40px;
 }
 
+.main-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
 .scrolling-content {
     overflow-y: scroll;
     min-height: 0px;

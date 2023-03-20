@@ -19,7 +19,7 @@ const Routines = ({ setSelectedUser }) => {
   }, []);
 
   return (
-    <div className="main-content" id="full-routines-page">
+    <div className="main-content main-layout" id="full-routines-page">
       <h1>Routines</h1>
       <div
         className="scrolling-content horizontal-cards"

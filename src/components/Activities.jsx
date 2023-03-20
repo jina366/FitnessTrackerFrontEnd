@@ -21,7 +21,7 @@ const Activities = ({ token }) => {
   }, []);
 
   return (
-    <div className="main-content" id="activities-full-page">
+    <div className="main-content main-layout" id="activities-full-page">
       <div id="activities-header">
         <h1>Activities</h1>
         {token ? (

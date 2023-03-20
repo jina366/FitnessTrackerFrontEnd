@@ -71,7 +71,7 @@ const MyRoutines = ({ token, setMyRoutineEdit, setMyRoutineActivityEdit }) => {
   }, []);
 
   return (
-    <div className="main-content" id="full-routines-page">
+    <div className="main-content main-layout" id="full-routines-page">
       <div id="my-routine-header">
         <h1>My Routines</h1>
         <button
