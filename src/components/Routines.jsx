@@ -35,6 +35,7 @@ const Routines = ({ setSelectedUser }) => {
                 onClick={() => {
                   setSelectedUser({ username: post.creatorName });
                 }}
+                className="shade-link user-link"
               >
                 <h3>Creator: {post.creatorName}</h3>
               </Link>

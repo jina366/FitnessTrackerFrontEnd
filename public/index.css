@@ -19,11 +19,25 @@
 
 button {
   padding: 2px 4px;
+  border: none;
+  background-color: inherit;
+  color: inherit;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 a {
   text-decoration: none;
   color: inherit;
+}
+
+.shade-link {
+    transition: background-color 0.25s;
+    border-radius: 5px;
+}
+
+.shade-link:hover {
+    background-color: rgba(0, 0, 0, 0.181);
 }
 
 #navbar {
@@ -34,7 +48,6 @@ a {
   flex-wrap: nowrap;
   align-items: center;
   justify-content: space-between;
-  flex-grow: 1;
   padding: 10px;
 }
 
@@ -53,6 +66,7 @@ a {
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  font-family: apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
 }
 
 .main-content {
@@ -138,6 +152,10 @@ a {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+}
+
+.user-link {
+    align-self: flex-start;
 }
 
 #activities-full-page {
