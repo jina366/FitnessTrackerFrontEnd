@@ -246,3 +246,16 @@ export const createActivity = async (token, name, description) => {
     console.error(error);
   }
 };
+
+export const getUsersRoutines = async (username) => {
+  try {
+    const response = await fetch(`${BASE}/users/${username}/routines`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const result = await response.json();
+    console.log('users routine', result)
+    return result;
+  } catch (error) {}
+};

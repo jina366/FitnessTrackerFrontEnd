@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { getAllRoutines } from "../apiAdapters";
+import { Link } from "react-router-dom"
 
-const Routines = () => {
+const Routines = ({setSelectedUser}) => {
   const [routine, setRoutine] = useState([]);
 
   async function getRoutines() {
@@ -26,7 +27,10 @@ const Routines = () => {
             <div id="routine-container" key={idx}>
               <h2>Name: {post.name}</h2>
               <h3>Goal: {post.goal}</h3>
-              <h3>Creator: {post.creatorName}</h3>
+              <Link to={`/${post.creatorName}/routines`} onClick={() => {
+                setSelectedUser({username: post.creatorName})
+              }}>
+              <h3>Creator: {post.creatorName}</h3></Link>
               <div className='card' id="routine-activity-card">
                 <h3>Activities:</h3>
                 {post.activities.map((activity, idx) => {
