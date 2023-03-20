@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { getUsersRoutines } from "../apiAdapters";
+import React, { useState, useEffect } from 'react';
+import { getUsersRoutines } from '../apiAdapters';
 
 const CreatorRoutines = ({ selectedUser, setSelectedUser }) => {
   const [routines, setRoutines] = useState([]);
@@ -20,9 +20,13 @@ const CreatorRoutines = ({ selectedUser, setSelectedUser }) => {
   }, []);
 
   return (
-    <div id="full-routines-page">
+    <div className="main-content main-layout" id="full-routines-page">
       <h1>{username}'s Routines</h1>
-      <div id="routine-page-container">
+      <div></div>
+      <div
+        className="scrolling-content horizontal-cards"
+        id="routine-page-container"
+      >
         {routines.map((routine, idx) => {
           return (
             <div id="routine-container" key={`selected user ${idx}`}>

@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   getMyUser,
   deleteRoutine,
   getAllActivities,
   deleteActivityFromRoutine,
-} from "../apiAdapters";
-import { AddActivityToRoutine } from "./";
+} from '../apiAdapters';
+import { AddActivityToRoutine } from './';
 
 const MyRoutines = ({ token, setMyRoutineEdit, setMyRoutineActivityEdit }) => {
   const [routine, setRoutine] = useState([]);
@@ -71,18 +71,18 @@ const MyRoutines = ({ token, setMyRoutineEdit, setMyRoutineActivityEdit }) => {
   }, []);
 
   return (
-    <div id="full-routines-page">
+    <div className="main-content main-layout" id="full-routines-page">
       <div id="my-routine-header">
         <h1>My Routines</h1>
         <button
           onClick={() => {
-            navigate("/my-routines/new");
+            navigate('/my-routines/new');
           }}
         >
           Create New Routine
         </button>
       </div>
-      <div id="routine-page-container">
+      <div className="horizontal-cards" id="routine-page-container">
         {routine.map((post, idx) => {
           return (
             <div className="my-routine-container" key={`my routine${idx}`}>
@@ -108,7 +108,7 @@ const MyRoutines = ({ token, setMyRoutineEdit, setMyRoutineActivityEdit }) => {
                     showActivity={showActivity}
                   />
                 ) : null}
-                <div className="card" id="routine-activity-card">
+                <div id="routine-activity-card">
                   <h3>Activities:</h3>
                   {post.activities.map((activity, idx) => {
                     return (
@@ -129,7 +129,7 @@ const MyRoutines = ({ token, setMyRoutineEdit, setMyRoutineActivityEdit }) => {
                               count: activity.count,
                               routineActivityId: activity.routineActivityId,
                             });
-                            navigate("/my-routines/update-routine-activity");
+                            navigate('/my-routines/update-routine-activity');
                           }}
                         >
                           Edit
@@ -156,7 +156,7 @@ const MyRoutines = ({ token, setMyRoutineEdit, setMyRoutineActivityEdit }) => {
                       isPublic: post.isPublic,
                       routineId: post.id,
                     });
-                    navigate("/my-routines/update");
+                    navigate('/my-routines/update');
                   }}
                 >
                   Edit

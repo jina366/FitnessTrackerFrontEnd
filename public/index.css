@@ -6,6 +6,11 @@
   --yellow: #fffadb;
 }
 
+::-webkit-scrollbar {
+    background: transparent; /* Chrome/Safari/Webkit */
+    width: 0px;
+  }
+
 * {
   box-sizing: border-box;
   padding: 0px;
@@ -14,11 +19,30 @@
 
 button {
   padding: 2px 4px;
+  border: none;
+  background-color: inherit;
+  color: inherit;
+  border-radius: 5px;
+  transition: background-color 0.25s;
+  cursor: pointer;
+}
+
+button:hover {
+    background-color: rgba(0, 0, 0, 0.181);
 }
 
 a {
   text-decoration: none;
   color: inherit;
+}
+
+.shade-link {
+    transition: background-color 0.25s;
+    border-radius: 5px;
+}
+
+.shade-link:hover {
+    background-color: rgba(0, 0, 0, 0.181);
 }
 
 #navbar {
@@ -29,21 +53,55 @@ a {
   flex-wrap: nowrap;
   align-items: center;
   justify-content: space-between;
-  flex-grow: 1;
-  max-height: 10%;
-  min-height: 40px;
+  padding: 10px;
 }
 
 #navbarTabs-container {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   gap: 15px;
+  justify-content:center;
 }
 
 #main {
   height: 100vh;
   width: 100vw;
   background-color: var(--yellow);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  font-family: apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+.main-content {
+    flex-grow: 1;
+    min-height: 0px;
+    padding: 40px;
+}
+
+.main-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.scrolling-content {
+    overflow-y: scroll;
+    min-height: 0px;
+    flex-grow: 1;
+}
+
+.horizontal-cards {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+.horizontal-cards > div {
+    flex: 1 1 350px;
+    max-height: 600px;
 }
 
 .center-form {
@@ -60,19 +118,12 @@ a {
   flex-direction: row;
   flex-wrap: wrap;
   gap: 30px;
-  min-height: 0px;
 }
-#routine-container::-webkit-scrollbar {
-  background: transparent; /* Chrome/Safari/Webkit */
-  width: 0px;
-}
+
 
 #routine-container {
   display: flex;
   flex-direction: column;
-  flex-basis: 400px;
-  max-width: 400px;
-  max-height: 500px;
   overflow-y: scroll;
   padding: 20px;
   border-radius: 8px;
@@ -99,13 +150,17 @@ a {
 #full-routines-page {
   overflow-y: scroll;
   min-height: 0px;
-  background-color: var(--yellow);
+  flex-grow: 1;
 }
 
 .my-routine-container {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+}
+
+.user-link {
+    align-self: flex-start;
 }
 
 #activities-full-page {
@@ -170,4 +225,12 @@ a {
 
 #number-form-field {
     width: 3rem;
+}
+
+@media (max-width: 768px) {
+    #navbar {
+        flex-direction: column;
+        align-content: center;
+        gap: 10px;
+    }
 }
