@@ -82,7 +82,7 @@ const MyRoutines = ({ token, setMyRoutineEdit, setMyRoutineActivityEdit }) => {
           Create New Routine
         </button>
       </div>
-      <div id="routine-page-container">
+      <div className="horizontal-cards" id="routine-page-container">
         {routine.map((post, idx) => {
           return (
             <div className="my-routine-container" key={`my routine${idx}`}>
@@ -108,7 +108,7 @@ const MyRoutines = ({ token, setMyRoutineEdit, setMyRoutineActivityEdit }) => {
                     showActivity={showActivity}
                   />
                 ) : null}
-                <div className="card" id="routine-activity-card">
+                <div id="routine-activity-card">
                   <h3>Activities:</h3>
                   {post.activities.map((activity, idx) => {
                     return (

@@ -21,7 +21,10 @@ const Routines = ({ setSelectedUser }) => {
   return (
     <div className="main-content" id="full-routines-page">
       <h1>Routines</h1>
-      <div className="scrolling-content" id="routine-page-container">
+      <div
+        className="scrolling-content horizontal-cards"
+        id="routine-page-container"
+      >
         {routine.map((post, idx) => {
           return (
             <div id="routine-container" key={idx}>

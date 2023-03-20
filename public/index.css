@@ -57,12 +57,25 @@ a {
 .main-content {
     flex-grow: 1;
     min-height: 0px;
+    padding: 40px;
 }
 
 .scrolling-content {
     overflow-y: scroll;
     min-height: 0px;
     flex-grow: 1;
+}
+
+.horizontal-cards {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+.horizontal-cards > div {
+    flex: 1 1 350px;
+    max-height: 600px;
 }
 
 .center-form {
@@ -85,9 +98,6 @@ a {
 #routine-container {
   display: flex;
   flex-direction: column;
-  flex-basis: 400px;
-  max-width: 400px;
-  max-height: 500px;
   overflow-y: scroll;
   padding: 20px;
   border-radius: 8px;
