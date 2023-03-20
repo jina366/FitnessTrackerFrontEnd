@@ -8,7 +8,7 @@ import {
 } from '../apiAdapters';
 import { AddActivityToRoutine } from './';
 
-const MyRoutines = ({ token, setMyRoutineEdit }) => {
+const MyRoutines = ({ token, setMyRoutineEdit, setMyRoutineActivityEdit }) => {
   const [routine, setRoutine] = useState([]);
   const [activities, setActivities] = useState([]);
   const [showActivity, setShowActivity] = useState({});
@@ -115,6 +115,20 @@ const MyRoutines = ({ token, setMyRoutineEdit }) => {
                       <h5>{activity.description}</h5>
                       <h5>Duration: {activity.duration}</h5>
                       <h5>Count: {activity.count}</h5>
+                      <button
+                        onClick={() => {
+                          setMyRoutineActivityEdit({
+                            name: activity.name,
+                            description: activity.description,
+                            duration: activity.duration,
+                            count: activity.count,
+                            routineActivityId: activity.routineActivityId,
+                          });
+                          navigate('/my-routines/update-routine-activity');
+                        }}
+                      >
+                        Edit
+                      </button>
                       <button
                         type="submit"
                         onClick={() => {

@@ -178,17 +178,50 @@ export async function addActivityToRoutine(
 }
 
 export async function deleteActivityFromRoutine(token, routineActivityId) {
-    try {
-        const response = await fetch(`${BASE}/routine_activities/${routineActivityId}`, {
-            method: "DELETE",
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${token}`
-            }
-        });
-        const result = await response.json();
-        return result
-    } catch (error) {
-        console.log(error)
-    }
+  try {
+    const response = await fetch(
+      `${BASE}/routine_activities/${routineActivityId}`,
+      {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.log(error);
+  }
 }
+
+export const updateRoutineActivity = async (
+  token,
+  routineActivityId,
+  duration,
+  count
+) => {
+  try {
+    const response = await fetch(
+      `${BASE}/routine_activities/${routineActivityId}`,
+      {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          duration,
+          count,
+        }),
+      }
+    );
+    const result = await response.json();
+
+    console.log('updateRA:', result);
+    return result;
+  } catch (error) {
+    console.error(error);
+  }
+};
