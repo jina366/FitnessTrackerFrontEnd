@@ -6,6 +6,11 @@
   --yellow: #fffadb;
 }
 
+::-webkit-scrollbar {
+    background: transparent; /* Chrome/Safari/Webkit */
+    width: 0px;
+  }
+
 * {
   box-sizing: border-box;
   padding: 0px;
@@ -44,6 +49,20 @@ a {
   height: 100vh;
   width: 100vw;
   background-color: var(--yellow);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+    flex-grow: 1;
+    min-height: 0px;
+}
+
+.scrolling-content {
+    overflow-y: scroll;
+    min-height: 0px;
+    flex-grow: 1;
 }
 
 .center-form {
@@ -60,12 +79,8 @@ a {
   flex-direction: row;
   flex-wrap: wrap;
   gap: 30px;
-  min-height: 0px;
 }
-#routine-container::-webkit-scrollbar {
-  background: transparent; /* Chrome/Safari/Webkit */
-  width: 0px;
-}
+
 
 #routine-container {
   display: flex;
@@ -99,7 +114,7 @@ a {
 #full-routines-page {
   overflow-y: scroll;
   min-height: 0px;
-  background-color: var(--yellow);
+  flex-grow: 1;
 }
 
 .my-routine-container {
