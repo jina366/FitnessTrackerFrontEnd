@@ -13,6 +13,7 @@ import {
   CreatorRoutines,
   RoutineWithActivity,
   UpdateActivity,
+  Homepage,
 } from './';
 import { Routes, Route } from 'react-router-dom';
 import { getTokenFromLocalStorage } from '../utils/localStorage';
@@ -21,9 +22,9 @@ const Main = () => {
   const [token, setToken] = useState('');
   const [myRoutineEdit, setMyRoutineEdit] = useState({});
   const [myRoutineActivityEdit, setMyRoutineActivityEdit] = useState({});
-  const [activityEdit, setActivityEdit] = useState({})
-  const [selectedUser, setSelectedUser] = useState({})
-  const [selectedActivity, setSelectedActivity] = useState({})
+  const [activityEdit, setActivityEdit] = useState({});
+  const [selectedUser, setSelectedUser] = useState({});
+  const [selectedActivity, setSelectedActivity] = useState({});
 
   useEffect(() => {
     setToken(getTokenFromLocalStorage());
@@ -37,6 +38,7 @@ const Main = () => {
     <div id="main">
       <Navbar setToken={setToken} token={token} />
       <Routes>
+        <Route path="/" element={<Homepage />} />
         <Route
           path="/users/register"
           element={<Register setToken={setToken} token={token} />}
@@ -45,13 +47,16 @@ const Main = () => {
           path="/users/login"
           element={<Login setToken={setToken} token={token} />}
         />
-        <Route 
-          path="/routines" 
+        <Route
+          path="/routines"
           element={
-            <Routines 
+            <Routines
               setSelectedUser={setSelectedUser}
               selectedActivity={selectedActivity}
-              setSelectedActivity={setSelectedActivity}/>} />
+              setSelectedActivity={setSelectedActivity}
+            />
+          }
+        />
         <Route
           path="/my-routines"
           element={
@@ -86,34 +91,48 @@ const Main = () => {
             />
           }
         />
-        <Route 
-          path="/activities" 
+        <Route
+          path="/activities"
           element={
-            <Activities 
-              token={token} 
+            <Activities
+              token={token}
               setActivityEdit={setActivityEdit}
-              setSelectedActivity={setSelectedActivity}/>} />
+              setSelectedActivity={setSelectedActivity}
+            />
+          }
+        />
         <Route
           path="/activities/new"
           element={<CreateActivity token={token} />}
         />
-        <Route 
-          path="/activities/update" 
+        <Route
+          path="/activities/update"
           element={
-            <UpdateActivity 
-              token={token} 
-              activityEdit={activityEdit} 
-              setActivityEdit={setActivityEdit}/>} />
-        <Route 
-          path="/:username/routines" 
-          element={<CreatorRoutines 
-          selectedUser={selectedUser} 
-          setSelectedUser={setSelectedUser}/>}/>
-        <Route 
+            <UpdateActivity
+              token={token}
+              activityEdit={activityEdit}
+              setActivityEdit={setActivityEdit}
+            />
+          }
+        />
+        <Route
+          path="/:username/routines"
+          element={
+            <CreatorRoutines
+              selectedUser={selectedUser}
+              setSelectedUser={setSelectedUser}
+            />
+          }
+        />
+        <Route
           path="/routines/:activityId"
-          element={<RoutineWithActivity
-          selectedActivity={selectedActivity}
-          setSelectedActivity={setSelectedActivity}/>}/>
+          element={
+            <RoutineWithActivity
+              selectedActivity={selectedActivity}
+              setSelectedActivity={setSelectedActivity}
+            />
+          }
+        />
         <Route path="*" element={null} />
       </Routes>
     </div>

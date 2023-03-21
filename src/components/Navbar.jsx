@@ -1,11 +1,14 @@
 import React from 'react';
 import { NavbarUser, NavbarNoUser } from './';
 import { Link } from 'react-router-dom';
+import { default as Logo } from '../Media/Logo';
 
 const Navbar = ({ setToken, token }) => {
   return (
     <div id="navbar">
-      <div id="navbarLogo">Logo</div>
+      <div id="navbar-logo">
+        <Logo />
+      </div>
       <div id="navbarTabs">
         <div id="navbarTabs-container">
           <Link to="/">

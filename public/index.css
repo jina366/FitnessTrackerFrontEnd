@@ -56,6 +56,10 @@ a {
   padding: 10px;
 }
 
+#navbar-logo {
+  height: 60px;
+}
+
 #navbarTabs-container {
   display: flex;
   flex-direction: row;
@@ -112,6 +116,38 @@ a {
   border-radius: 5px;
   align-self: center;
 }
+
+#home-page {
+  position: relative;
+}
+
+#homepage-logo {
+  height: 70px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 15px;
+  color: var(--darkOrange)
+}
+
+#homepage-text-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#homepage-text-content p {
+  font-size: 1.25rem;
+  color: var(--darkOrange);
+}
+
+#attr {
+  position: absolute;
+  bottom: 10px;
+  font-size: 0.75rem;
+  color: var(--darkOrange)
+}
+
 
 #routine-page-container {
   display: flex;
