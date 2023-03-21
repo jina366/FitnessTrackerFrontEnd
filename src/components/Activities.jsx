@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { getAllActivities } from '../apiAdapters';
 import { useNavigate } from 'react-router-dom';
 
-const Activities = ({ token, setActivityEdit }) => {
+const Activities = ({ token, setActivityEdit, setSelectedActivity }) => {
   const [activities, setActivities] = useState([]);
   const navigate = useNavigate();
 
@@ -27,7 +27,7 @@ const Activities = ({ token, setActivityEdit }) => {
         {token ? (
           <button
             onClick={() => {
-              navigate('/activities/new');
+              navigate("/activities/new");
             }}
           >
             Create New Activity
@@ -39,17 +39,32 @@ const Activities = ({ token, setActivityEdit }) => {
           {activities.map((activity, idx) => {
             return (
               <div id="activity-container" key={`ActivityPage${idx}`}>
-                <h2>{activity.name}</h2>
-                <p>{activity.description}</p>
-                {token ?
-                <button 
+                <h2
                   onClick={() => {
-                    setActivityEdit({
+                    setSelectedActivity({
+                      activityId: activity.id,
+                      activityName: activity.name,
+                    });
+                    navigate(`/routines/${activity.id}`);
+                  }}
+                >
+                  {activity.name}
+                </h2>
+                <p>{activity.description}</p>
+                {token ? (
+                  <button
+                    onClick={() => {
+                      setActivityEdit({
                         id: activity.id,
                         name: activity.name,
-                        description: activity.description})
-                    navigate('/activities/update')
-                  }}>Edit</button> : null}
+                        description: activity.description,
+                      });
+                      navigate("/activities/update");
+                    }}
+                  >
+                    Edit
+                  </button>
+                ) : null}
               </div>
             );
           })}

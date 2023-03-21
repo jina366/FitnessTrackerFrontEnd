@@ -45,7 +45,13 @@ const Main = () => {
           path="/users/login"
           element={<Login setToken={setToken} token={token} />}
         />
-        <Route path="/routines" element={<Routines setSelectedUser={setSelectedUser}/>} />
+        <Route 
+          path="/routines" 
+          element={
+            <Routines 
+              setSelectedUser={setSelectedUser}
+              selectedActivity={selectedActivity}
+              setSelectedActivity={setSelectedActivity}/>} />
         <Route
           path="/my-routines"
           element={
@@ -80,7 +86,13 @@ const Main = () => {
             />
           }
         />
-        <Route path="/activities" element={<Activities token={token} setActivityEdit={setActivityEdit}/>} />
+        <Route 
+          path="/activities" 
+          element={
+            <Activities 
+              token={token} 
+              setActivityEdit={setActivityEdit}
+              setSelectedActivity={setSelectedActivity}/>} />
         <Route
           path="/activities/new"
           element={<CreateActivity token={token} />}
@@ -96,9 +108,7 @@ const Main = () => {
           path="/:username/routines" 
           element={<CreatorRoutines 
           selectedUser={selectedUser} 
-          setSelectedUser={setSelectedUser}
-          selectedActivity={selectedActivity}
-          setSelectedActivity={setSelectedActivity}/>}/>
+          setSelectedUser={setSelectedUser}/>}/>
         <Route 
           path="/routines/:activityId"
           element={<RoutineWithActivity

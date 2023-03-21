@@ -23,7 +23,7 @@ const RoutineWithActivity = ({ selectedActivity, setSelectedActivity }) => {
 
   return (
     <div className="main-content main-layout" id="full-routines-page">
-      <h1>Routines</h1>
+      <h1>Routines with {selectedActivity.activityName}</h1>
       <div></div>
       <div
         className="scrolling-content horizontal-cards"
