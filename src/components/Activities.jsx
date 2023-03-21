@@ -27,7 +27,7 @@ const Activities = ({ token, setActivityEdit, setSelectedActivity }) => {
         {token ? (
           <button
             onClick={() => {
-              navigate("/activities/new");
+              navigate('/activities/new');
             }}
           >
             Create New Activity
@@ -40,6 +40,7 @@ const Activities = ({ token, setActivityEdit, setSelectedActivity }) => {
             return (
               <div id="activity-container" key={`ActivityPage${idx}`}>
                 <h2
+                  className="shade-link"
                   onClick={() => {
                     setSelectedActivity({
                       activityId: activity.id,
@@ -59,7 +60,7 @@ const Activities = ({ token, setActivityEdit, setSelectedActivity }) => {
                         name: activity.name,
                         description: activity.description,
                       });
-                      navigate("/activities/update");
+                      navigate('/activities/update');
                     }}
                   >
                     Edit

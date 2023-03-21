@@ -18,35 +18,75 @@
 }
 
 button {
-  padding: 2px 4px;
-  border: none;
-  background-color: inherit;
+  padding: 4px 8px;
+  border: solid 1px rgba(0, 0, 0, 0.181);
   color: inherit;
+  background-color: inherit;
   border-radius: 5px;
-  transition: background-color 0.25s;
+  transition: border 0.25s, background-color 0.25s;
   cursor: pointer;
 }
 
 button:hover {
-    background-color: rgba(0, 0, 0, 0.181);
+  border: solid 1px rgba(255, 255, 255, 0);
+  background-color: rgba(0, 0, 0, 0.181);
 }
 
 a {
   text-decoration: none;
   color: inherit;
+  cursor: pointer;
+}
+
+.border-link {
+  border: solid 1px rgba(0, 0, 0, 0.181);
+  padding: 3px 6px;
+  border-radius: 5px;
+}
+
+.border-link:hover {
+  border: solid 1px rgba(255, 255, 255, 0);
+  background-color: rgba(0, 0, 0, 0.181);
+}
+
+input {
+  border-radius: 5px;
+}
+
+input[type=text], input[type=password] {
+  border: none;
+}
+
+input[type=text]:focus, input[type=password]:hover {
+  outline: none;
 }
 
 .shade-link {
-    transition: background-color 0.25s;
-    border-radius: 5px;
+  transition: background-color 0.25s;
+  border-radius: 5px;
+  border: solid 1px rgba(0, 0, 0, 0.181);
+  transition: border 0.25s, background-color 0.25s;
+  cursor: pointer;
+  align-self: flex-start;
 }
 
 .shade-link:hover {
+  border: solid 1px rgba(255, 255, 255, 0);
     background-color: rgba(0, 0, 0, 0.181);
 }
 
 .error-message {
   color: red;
+}
+
+.routine-creator {
+  align-self: flex-start;
+}
+
+.warning {
+  color: red;
+  font-weight: bold;
+  font: 1.25 em;
 }
 
 #navbar {
@@ -75,6 +115,16 @@ a {
 #navbar .navbar-icons {
   height: 2.25rem;
   width: 2.25rem;
+}
+
+#navbar button {
+  border: none;
+}
+
+.navbar-user {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
 }
 
 #main {
@@ -158,6 +208,12 @@ a {
 }
 
 
+.register-warning {
+  max-width: 150px;
+  align-self: center;
+  text-align: center;
+}
+
 #routine-page-container {
   display: flex;
   flex-direction: row;
@@ -181,9 +237,21 @@ a {
   display: flex;
   flex-direction: column;
   background-color: rgb(255, 255, 255, 0.4);
-  gap: 10px;
+  gap: 15px;
   padding: 10px;
   border-radius: 8px;
+}
+
+#routine-activity-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.routine-activity-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 3px;
 }
 
 #my-routine-header, #activities-header {
@@ -202,6 +270,29 @@ a {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+}
+
+.my-routine-header-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.my-routine-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 3px;
+}
+
+.add-activity-button {
+  align-self: center;
+  padding: 10px 20px;
+}
+
+.activity-warning {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
 .user-link {
@@ -223,10 +314,15 @@ a {
     flex-direction: column;
     border-bottom: 1px solid black;
     padding: 20px 0px;
+    gap: 10px;
 }
 
 #activity-container:last-child {
     border: none;
+}
+
+#activity-container button {
+  align-self: start;
 }
 
 .form-parent {
@@ -234,7 +330,7 @@ a {
     flex-direction: column;
     align-items: center;
     background-color: var(--blue);
-    padding: 20px;
+    padding: 25px 50px;
     border-radius: 5px;
     gap: 15px;
     color: white;

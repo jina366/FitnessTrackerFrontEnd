@@ -21,7 +21,7 @@ const Register = ({ setToken, token }) => {
         setPassword('');
         setConfirmPassword('');
       } else {
-        setError('User already exists')
+        setError('User already exists');
       }
     } catch (error) {
       console.log(error);
@@ -37,14 +37,14 @@ const Register = ({ setToken, token }) => {
 
   return (
     <div className="center-form">
-      <h1>Register</h1>
-      <div>
+      <div className="form-parent">
         <form
           onSubmit={(e) => {
             e.preventDefault();
             makeProfile(username, password);
           }}
         >
+          <h1>Register</h1>
           <h3>Username</h3>
           <input
             name="username"
@@ -57,7 +57,6 @@ const Register = ({ setToken, token }) => {
               setUsername(e.target.value);
             }}
           />
-
           <h3>Password</h3>
           <input
             name="password"
@@ -70,7 +69,6 @@ const Register = ({ setToken, token }) => {
               setPassword(e.target.value);
             }}
           />
-
           <h3>Confirm Password</h3>
           <input
             name="confirmPassword"
@@ -83,11 +81,16 @@ const Register = ({ setToken, token }) => {
               setConfirmPassword(e.target.value);
             }}
           />
-
           {confirmPassword === password && password !== '' ? (
             <button type="submit">Submit</button>
-          ) : null}
-          <p className='error-message'>{error}</p>
+          ) : password === '' ? (
+            <p className="warning register-warning">Please enter a password</p>
+          ) : (
+            <p className="warning register-warning">
+              Confirmation not matching
+            </p>
+          )}
+          <p className="error-message">{error}</p>
         </form>
       </div>
     </div>
