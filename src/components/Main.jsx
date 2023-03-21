@@ -64,6 +64,7 @@ const Main = () => {
               token={token}
               setMyRoutineEdit={setMyRoutineEdit}
               setMyRoutineActivityEdit={setMyRoutineActivityEdit}
+              setSelectedActivity={setSelectedActivity}
             />
           }
         />

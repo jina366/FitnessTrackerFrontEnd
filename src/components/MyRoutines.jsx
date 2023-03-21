@@ -1,14 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   getMyUser,
   deleteRoutine,
   getAllActivities,
   deleteActivityFromRoutine,
-} from '../apiAdapters';
-import { AddActivityToRoutine } from './';
+} from "../apiAdapters";
+import { AddActivityToRoutine } from "./";
 
-const MyRoutines = ({ token, setMyRoutineEdit, setMyRoutineActivityEdit }) => {
+const MyRoutines = ({
+  token,
+  setMyRoutineEdit,
+  setMyRoutineActivityEdit,
+  setSelectedActivity,
+}) => {
   const [routine, setRoutine] = useState([]);
   const [activities, setActivities] = useState([]);
   const [showActivity, setShowActivity] = useState({});
@@ -76,7 +81,7 @@ const MyRoutines = ({ token, setMyRoutineEdit, setMyRoutineActivityEdit }) => {
         <h1>My Routines</h1>
         <button
           onClick={() => {
-            navigate('/my-routines/new');
+            navigate("/my-routines/new");
           }}
         >
           Create New Routine
@@ -105,7 +110,7 @@ const MyRoutines = ({ token, setMyRoutineEdit, setMyRoutineActivityEdit }) => {
                             isPublic: post.isPublic,
                             routineId: post.id,
                           });
-                          navigate('/my-routines/update');
+                          navigate("/my-routines/update");
                         }}
                       >
                         Edit
@@ -151,7 +156,18 @@ const MyRoutines = ({ token, setMyRoutineEdit, setMyRoutineActivityEdit }) => {
                           id="routine-activity-container"
                           key={`activity${idx}`}
                         >
-                          <h4>Name: {activity.name}</h4>
+                          <h4
+                            className="shade-link"
+                            onClick={() => {
+                              setSelectedActivity({
+                                activityId: activity.id,
+                                activityName: activity.name,
+                              });
+                              navigate(`/routines/${activity.id}`);
+                            }}
+                          >
+                            Name: {activity.name}
+                          </h4>
                           <h5>{activity.description}</h5>
                           <h5>Duration (mins): {activity.duration}</h5>
                           <h5>Count (reps): {activity.count}</h5>
@@ -166,7 +182,7 @@ const MyRoutines = ({ token, setMyRoutineEdit, setMyRoutineActivityEdit }) => {
                                   routineActivityId: activity.routineActivityId,
                                 });
                                 navigate(
-                                  '/my-routines/update-routine-activity'
+                                  "/my-routines/update-routine-activity"
                                 );
                               }}
                             >
