@@ -35,14 +35,14 @@ const Login = ({ setToken, token }) => {
 
   return (
     <div className="center-form">
-      <h1>Login</h1>
-      <div>
+      <div className="form-parent">
         <form
           onSubmit={(e) => {
             e.preventDefault();
             getLogin(username, password);
           }}
         >
+          <h1>Login</h1>
           <h3>Username</h3>
           <input
             name="username"
