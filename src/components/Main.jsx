@@ -12,6 +12,7 @@ import {
   CreateActivity,
   CreatorRoutines,
   RoutineWithActivity,
+  UpdateActivity,
 } from './';
 import { Routes, Route } from 'react-router-dom';
 import { getTokenFromLocalStorage } from '../utils/localStorage';
@@ -20,6 +21,7 @@ const Main = () => {
   const [token, setToken] = useState('');
   const [myRoutineEdit, setMyRoutineEdit] = useState({});
   const [myRoutineActivityEdit, setMyRoutineActivityEdit] = useState({});
+  const [activityEdit, setActivityEdit] = useState({})
   const [selectedUser, setSelectedUser] = useState({})
   const [selectedActivity, setSelectedActivity] = useState({})
 
@@ -78,11 +80,18 @@ const Main = () => {
             />
           }
         />
-        <Route path="/activities" element={<Activities token={token} />} />
+        <Route path="/activities" element={<Activities token={token} setActivityEdit={setActivityEdit}/>} />
         <Route
           path="/activities/new"
           element={<CreateActivity token={token} />}
         />
+        <Route 
+          path="/activities/update" 
+          element={
+            <UpdateActivity 
+              token={token} 
+              activityEdit={activityEdit} 
+              setActivityEdit={setActivityEdit}/>} />
         <Route 
           path="/:username/routines" 
           element={<CreatorRoutines 

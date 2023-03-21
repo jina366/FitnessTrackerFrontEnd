@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { getAllActivities } from '../apiAdapters';
 import { useNavigate } from 'react-router-dom';
 
-const Activities = ({ token }) => {
+const Activities = ({ token, setActivityEdit }) => {
   const [activities, setActivities] = useState([]);
   const navigate = useNavigate();
 
@@ -41,6 +41,15 @@ const Activities = ({ token }) => {
               <div id="activity-container" key={`ActivityPage${idx}`}>
                 <h2>{activity.name}</h2>
                 <p>{activity.description}</p>
+                {token ?
+                <button 
+                  onClick={() => {
+                    setActivityEdit({
+                        id: activity.id,
+                        name: activity.name,
+                        description: activity.description})
+                    navigate('/activities/update')
+                  }}>Edit</button> : null}
               </div>
             );
           })}

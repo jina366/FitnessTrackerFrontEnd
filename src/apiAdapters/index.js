@@ -274,3 +274,24 @@ export const getRoutinesByActivity = async (activityId) => {
     console.error(error);
   }
 };
+
+export const updateActivity = async (token, activityId, name, description) => {
+  try {
+    const response = await fetch(`${BASE}/activities/${activityId}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        name,
+        description,
+      }),
+    });
+    const result = await response.json();
+    console.log("edit activity", result);
+    return result;
+  } catch (error) {
+    console.error(error);
+  }
+};
