@@ -1,5 +1,7 @@
 import React from 'react';
 import { saveToLocalStorage } from '../utils/localStorage';
+import LogoutIcon from '@mui/icons-material/Logout';
+import Tooltip from '@mui/material/Tooltip';
 
 function NavbarUser({ setToken }) {
   return (
@@ -10,7 +12,9 @@ function NavbarUser({ setToken }) {
           saveToLocalStorage('');
         }}
       >
-        Log Out
+        <Tooltip title="Log Out">
+          <LogoutIcon className="navbar-icons" />
+        </Tooltip>
       </button>
     </div>
   );
