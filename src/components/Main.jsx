@@ -29,8 +29,6 @@ const Main = () => {
     console.log('main token', token);
   }, [token]);
 
-  console.log(selectedUser)
-
   return (
     <div id="main">
       <Navbar setToken={setToken} token={token} />

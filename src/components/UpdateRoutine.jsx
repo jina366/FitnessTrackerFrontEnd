@@ -41,8 +41,9 @@ const UpdateRoutine = ({ token, myRoutineEdit, setMyRoutineEdit }) => {
               name="public"
               type="checkbox"
               value={isPublic}
+              checked={isPublic}
               onChange={(e) => {
-                setIsPublic(e.target.value);
+                setIsPublic(e.target.checked);
               }}
             />
           </div>
