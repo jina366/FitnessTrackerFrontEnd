@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { getAllRoutines } from '../apiAdapters';
+<<<<<<< HEAD
 import { Link, useNavigate} from 'react-router-dom';
+=======
+import { Link, useLinkClickHandler, useHref } from 'react-router-dom';
+>>>>>>> 46ea132 (more CSS updates)
 
 const Routines = ({ setSelectedUser, setSelectedActivity }) => {
   const [routine, setRoutine] = useState([]);
@@ -15,7 +19,6 @@ const Routines = ({ setSelectedUser, setSelectedActivity }) => {
       console.log(error);
     }
   }
-
 
   useEffect(() => {
     getRoutines();

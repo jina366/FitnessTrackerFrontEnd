@@ -35,6 +35,18 @@ button:hover {
 a {
   text-decoration: none;
   color: inherit;
+
+}
+
+.border-link {
+  border: solid 1px rgba(0, 0, 0, 0.181);
+  padding: 3px 6px;
+  border-radius: 5px;
+}
+
+.border-link:hover {
+  border: solid 1px rgba(255, 255, 255, 0);
+  background-color: rgba(0, 0, 0, 0.181);
 }
 
 input {

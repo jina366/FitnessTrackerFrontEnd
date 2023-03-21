@@ -92,7 +92,7 @@ const MyRoutines = ({ token, setMyRoutineEdit, setMyRoutineActivityEdit }) => {
               <div id="routine-container">
                 <h2>Name: {post.name}</h2>
                 <h3>Goal: {post.goal}</h3>
-                <h3>Creator: {post.creatorName}</h3>
+                <h3 className="border-link">Creator: {post.creatorName}</h3>
                 <button
                   className="add-activity-button"
                   onClick={() => {
