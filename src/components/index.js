@@ -13,3 +13,4 @@ export { default as UpdateRoutineActivity } from './UpdateRoutineActivity';
 export { default as Activities } from './Activities';
 export { default as CreateActivity } from './CreateActivity';
 export { default as CreatorRoutines } from './CreatorRoutines';
+export { default as RoutineWithActivity } from './RoutineWithActivity';

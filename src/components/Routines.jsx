@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { getAllRoutines } from '../apiAdapters';
-import { Link } from 'react-router-dom';
+import { Link, useLinkClickHandler, useHref} from 'react-router-dom';
 
-const Routines = ({ setSelectedUser }) => {
+const Routines = ({ setSelectedUser, setSelectedActivity }) => {
   const [routine, setRoutine] = useState([]);
 
   async function getRoutines() {
@@ -14,6 +14,8 @@ const Routines = ({ setSelectedUser }) => {
       console.log(error);
     }
   }
+
+
   useEffect(() => {
     getRoutines();
   }, []);
@@ -44,7 +46,13 @@ const Routines = ({ setSelectedUser }) => {
                 {post.activities.map((activity, idx) => {
                   return (
                     <div id="routine-activity-container" key={`activity${idx}`}>
+                      <Link
+                        to={`/routines/${activity.id}`}
+                        onClick={() => {
+                          setSelectedActivity({activityId: activity.id})
+                        }}>
                       <h4>Name: {activity.name}</h4>
+                      </Link>
                       <h5>{activity.description}</h5>
                       <h5>Duration (mins): {activity.duration}</h5>
                       <h5>Count (reps): {activity.count}</h5>

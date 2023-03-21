@@ -255,7 +255,22 @@ export const getUsersRoutines = async (username) => {
       },
     });
     const result = await response.json();
-    console.log('users routine', result)
+    console.log("users routine", result);
     return result;
   } catch (error) {}
+};
+
+export const getRoutinesByActivity = async (activityId) => {
+  try {
+    const response = await fetch(`${BASE}/activities/${activityId}/routines`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const result = await response.json();
+    console.log("routines by activity", result);
+    return result;
+  } catch (error) {
+    console.error(error);
+  }
 };
