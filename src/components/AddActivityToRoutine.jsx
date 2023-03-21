@@ -47,7 +47,7 @@ function AddActivityToRoutine({
   return (
     <div id="routine-activity">
       {filteredActivities.length === 0 ? (
-        <p className="warning">All activities already added</p>
+        <p className="warning activity-warning">All activities already added</p>
       ) : (
         <form
           onSubmit={(e) => {

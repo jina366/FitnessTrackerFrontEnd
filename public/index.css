@@ -62,6 +62,12 @@ input[type=text]:focus, input[type=password]:hover {
   color: red;
 }
 
+.warning {
+  color: red;
+  font-weight: bold;
+  font: 1.25 em;
+}
+
 #navbar {
   background-color: var(--blue);
   color: white;
@@ -177,6 +183,12 @@ input[type=text]:focus, input[type=password]:hover {
 }
 
 
+.register-warning {
+  max-width: 150px;
+  align-self: center;
+  text-align: center;
+}
+
 #routine-page-container {
   display: flex;
   flex-direction: row;
@@ -223,6 +235,17 @@ input[type=text]:focus, input[type=password]:hover {
   flex-grow: 1;
 }
 
+.add-activity-button {
+  align-self: center;
+  padding: 10px 20px;
+}
+
+.activity-warning {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
 .user-link {
     align-self: flex-start;
 }
@@ -253,7 +276,7 @@ input[type=text]:focus, input[type=password]:hover {
     flex-direction: column;
     align-items: center;
     background-color: var(--blue);
-    padding: 20px;
+    padding: 25px 50px;
     border-radius: 5px;
     gap: 15px;
     color: white;

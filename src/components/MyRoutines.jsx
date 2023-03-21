@@ -94,6 +94,7 @@ const MyRoutines = ({ token, setMyRoutineEdit, setMyRoutineActivityEdit }) => {
                 <h3>Goal: {post.goal}</h3>
                 <h3>Creator: {post.creatorName}</h3>
                 <button
+                  className="add-activity-button"
                   onClick={() => {
                     setShowActivity({
                       ...showActivity,
