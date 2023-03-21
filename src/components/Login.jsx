@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 const Login = ({ setToken, token }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
   async function getLogin(username, password) {
@@ -18,6 +19,8 @@ const Login = ({ setToken, token }) => {
         setUsername('');
         setPassword('');
         navigate(-1);
+      } else {
+        setError('Wrong username and/or password')
       }
     } catch (error) {
       console.log(error);
@@ -67,6 +70,7 @@ const Login = ({ setToken, token }) => {
           />
 
           <button type="submit">Submit</button>
+          <p className='error-message'>{error}</p>
         </form>
       </div>
     </div>

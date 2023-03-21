@@ -7,6 +7,7 @@ const Register = ({ setToken, token }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
   async function makeProfile(username, password) {
@@ -19,6 +20,8 @@ const Register = ({ setToken, token }) => {
         setUsername('');
         setPassword('');
         setConfirmPassword('');
+      } else {
+        setError('User already exists')
       }
     } catch (error) {
       console.log(error);
@@ -84,6 +87,7 @@ const Register = ({ setToken, token }) => {
           {confirmPassword === password && password !== '' ? (
             <button type="submit">Submit</button>
           ) : null}
+          <p className='error-message'>{error}</p>
         </form>
       </div>
     </div>

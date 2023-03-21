@@ -49,7 +49,7 @@ const CreateActivity = ({ token }) => {
             }}
           />
           <button type="submit">Submit</button>
-          <p>{error}</p>
+          <p className='error-message'>{error}</p>
         </form>
       </div>
     </div>

@@ -45,6 +45,10 @@ a {
     background-color: rgba(0, 0, 0, 0.181);
 }
 
+.error-message {
+  color: red;
+}
+
 #navbar {
   background-color: var(--blue);
   color: white;
