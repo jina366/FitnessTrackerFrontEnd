@@ -82,104 +82,115 @@ const MyRoutines = ({ token, setMyRoutineEdit, setMyRoutineActivityEdit }) => {
           Create New Routine
         </button>
       </div>
-      <div
-        className="scrolling-content horizontal-cards"
-        id="routine-page-container"
-      >
-        {routine.map((post, idx) => {
-          return (
-            <div className="my-routine-container" key={`my routine${idx}`}>
-              <div id="routine-container">
-                <h2>Name: {post.name}</h2>
-                <h3>Goal: {post.goal}</h3>
-                <h3 className="border-link routine-creator">
-                  Creator: {post.creatorName}
-                </h3>
-                <button
-                  className="add-activity-button"
-                  onClick={() => {
-                    setShowActivity({
-                      ...showActivity,
-                      [post.id]: !showActivity[post.id],
-                    });
-                  }}
-                >
-                  Add Activity to Routine
-                </button>
-                {showActivity[post.id] ? (
-                  <AddActivityToRoutine
-                    activities={activities}
-                    routineId={post.id}
-                    setShowActivity={setShowActivity}
-                    showActivity={showActivity}
-                    postActivities={post.activities}
-                  />
-                ) : null}
-                <div id="routine-activity-card">
-                  <h3>Activities:</h3>
-                  {post.activities.map((activity, idx) => {
-                    return (
-                      <div
-                        id="routine-activity-container"
-                        key={`activity${idx}`}
+
+      {routine.length === 0 ? (
+        <div>😢 No routines yet. Create a routine to use this page.</div>
+      ) : (
+        <div
+          className="scrolling-content horizontal-cards"
+          id="routine-page-container"
+        >
+          {routine.map((post, idx) => {
+            return (
+              <div className="my-routine-container" key={`my routine${idx}`}>
+                <div id="routine-container">
+                  <div className="my-routine-header-container">
+                    <h2>Name: {post.name}</h2>
+                    <div className="my-routine-buttons">
+                      <button
+                        onClick={() => {
+                          setMyRoutineEdit({
+                            name: post.name,
+                            goal: post.goal,
+                            isPublic: post.isPublic,
+                            routineId: post.id,
+                          });
+                          navigate('/my-routines/update');
+                        }}
                       >
-                        <h4>Name: {activity.name}</h4>
-                        <h5>{activity.description}</h5>
-                        <h5>Duration (mins): {activity.duration}</h5>
-                        <h5>Count (reps): {activity.count}</h5>
-                        <button
-                          onClick={() => {
-                            setMyRoutineActivityEdit({
-                              name: activity.name,
-                              description: activity.description,
-                              duration: activity.duration,
-                              count: activity.count,
-                              routineActivityId: activity.routineActivityId,
-                            });
-                            navigate('/my-routines/update-routine-activity');
-                          }}
+                        Edit
+                      </button>
+                      <button
+                        onClick={() => {
+                          removeRoutine(post);
+                        }}
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  </div>
+                  <h3>Goal: {post.goal}</h3>
+                  <h3 className="border-link routine-creator">
+                    Creator: {post.creatorName}
+                  </h3>
+                  <button
+                    className="add-activity-button"
+                    onClick={() => {
+                      setShowActivity({
+                        ...showActivity,
+                        [post.id]: !showActivity[post.id],
+                      });
+                    }}
+                  >
+                    Add Activity to Routine
+                  </button>
+                  {showActivity[post.id] ? (
+                    <AddActivityToRoutine
+                      activities={activities}
+                      routineId={post.id}
+                      setShowActivity={setShowActivity}
+                      showActivity={showActivity}
+                      postActivities={post.activities}
+                    />
+                  ) : null}
+                  <div id="routine-activity-card">
+                    <h3>Activities:</h3>
+                    {post.activities.map((activity, idx) => {
+                      return (
+                        <div
+                          id="routine-activity-container"
+                          key={`activity${idx}`}
                         >
-                          Edit
-                        </button>
-                        <button
-                          type="submit"
-                          onClick={() => {
-                            removeActivity(activity.routineActivityId);
-                          }}
-                        >
-                          Delete
-                        </button>
-                      </div>
-                    );
-                  })}
+                          <h4>Name: {activity.name}</h4>
+                          <h5>{activity.description}</h5>
+                          <h5>Duration (mins): {activity.duration}</h5>
+                          <h5>Count (reps): {activity.count}</h5>
+                          <div className="routine-activity-buttons">
+                            <button
+                              onClick={() => {
+                                setMyRoutineActivityEdit({
+                                  name: activity.name,
+                                  description: activity.description,
+                                  duration: activity.duration,
+                                  count: activity.count,
+                                  routineActivityId: activity.routineActivityId,
+                                });
+                                navigate(
+                                  '/my-routines/update-routine-activity'
+                                );
+                              }}
+                            >
+                              Edit
+                            </button>
+                            <button
+                              type="submit"
+                              onClick={() => {
+                                removeActivity(activity.routineActivityId);
+                              }}
+                            >
+                              Delete
+                            </button>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
                 </div>
               </div>
-              <div className="my-routine-buttons">
-                <button
-                  onClick={() => {
-                    setMyRoutineEdit({
-                      name: post.name,
-                      goal: post.goal,
-                      isPublic: post.isPublic,
-                      routineId: post.id,
-                    });
-                    navigate('/my-routines/update');
-                  }}
-                >
-                  Edit
-                </button>
-                <button
-                  onClick={() => {
-                    removeRoutine(post);
-                  }}
-                >
-                  Delete
-                </button>
-              </div>
-            </div>
-          );
-        })}
-      </div>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 };

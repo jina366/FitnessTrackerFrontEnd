@@ -237,9 +237,21 @@ input[type=text]:focus, input[type=password]:hover {
   display: flex;
   flex-direction: column;
   background-color: rgb(255, 255, 255, 0.4);
-  gap: 10px;
+  gap: 15px;
   padding: 10px;
   border-radius: 8px;
+}
+
+#routine-activity-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.routine-activity-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 3px;
 }
 
 #my-routine-header, #activities-header {
@@ -258,6 +270,18 @@ input[type=text]:focus, input[type=password]:hover {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+}
+
+.my-routine-header-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.my-routine-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 3px;
 }
 
 .add-activity-button {
@@ -290,10 +314,15 @@ input[type=text]:focus, input[type=password]:hover {
     flex-direction: column;
     border-bottom: 1px solid black;
     padding: 20px 0px;
+    gap: 10px;
 }
 
 #activity-container:last-child {
     border: none;
+}
+
+#activity-container button {
+  align-self: start;
 }
 
 .form-parent {
