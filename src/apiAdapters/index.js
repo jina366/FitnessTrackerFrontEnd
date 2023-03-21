@@ -8,8 +8,8 @@ export const registerAccount = async (username, password) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        username: username,
-        password: password,
+        username,
+        password,
       }),
     });
 
@@ -29,8 +29,8 @@ export const loginAccount = async (username, password) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        username: username,
-        password: password,
+        username,
+        password,
       }),
     });
 
@@ -83,9 +83,9 @@ export const updateRoutine = async (token, isPublic, name, goal, routineId) => {
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
-        isPublic: isPublic,
-        name: name,
-        goal: goal,
+        isPublic,
+        name,
+        goal,
       }),
     });
     const result = await response.json();
@@ -121,9 +121,9 @@ export const createRoutine = async (token, name, goal, isPublic) => {
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
-        name: name,
-        goal: goal,
-        isPublic: isPublic,
+        name,
+        goal,
+        isPublic,
       }),
     });
     const result = await response.json();
@@ -240,7 +240,7 @@ export const createActivity = async (token, name, description) => {
       }),
     });
     const result = await response.json();
-    console.log("create new activty", result);
+    console.log("create new activity", result);
     return result;
   } catch (error) {
     console.error(error);

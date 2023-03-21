@@ -39,7 +39,7 @@ const CreateRoutine = ({ token }) => {
               type="checkbox"
               value={isPublic}
               onChange={(e) => {
-                setIsPublic(e.target.value);
+                setIsPublic(e.target.checked);
               }}
             />
           </div>
