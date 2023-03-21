@@ -35,7 +35,7 @@ button:hover {
 a {
   text-decoration: none;
   color: inherit;
-
+  cursor: pointer;
 }
 
 .border-link {
@@ -62,16 +62,25 @@ input[type=text]:focus, input[type=password]:hover {
 }
 
 .shade-link {
-    transition: background-color 0.25s;
-    border-radius: 5px;
+  transition: background-color 0.25s;
+  border-radius: 5px;
+  border: solid 1px rgba(0, 0, 0, 0.181);
+  transition: border 0.25s, background-color 0.25s;
+  cursor: pointer;
+  align-self: flex-start;
 }
 
 .shade-link:hover {
+  border: solid 1px rgba(255, 255, 255, 0);
     background-color: rgba(0, 0, 0, 0.181);
 }
 
 .error-message {
   color: red;
+}
+
+.routine-creator {
+  align-self: flex-start;
 }
 
 .warning {
@@ -106,6 +115,10 @@ input[type=text]:focus, input[type=password]:hover {
 #navbar .navbar-icons {
   height: 2.25rem;
   width: 2.25rem;
+}
+
+#navbar button {
+  border: none;
 }
 
 .navbar-user {
