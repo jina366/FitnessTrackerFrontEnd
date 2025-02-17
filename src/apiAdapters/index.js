@@ -1,5 +1,5 @@
 // const BASE = "https://fitnesstrackr.fly.dev/api";
-const BASE = "https://fitnesstrackerbackend-cx4h.onrender.com"
+const BASE = "https://fitnesstrackerbackend-cx4h.onrender.com/api"
 
 export const registerAccount = async (username, password) => {
   try {
