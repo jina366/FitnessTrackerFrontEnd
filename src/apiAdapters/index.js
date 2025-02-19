@@ -1,9 +1,9 @@
-// const BASE = "https://fitnesstrackr.fly.dev/api";
-const BASE = "https://fitnesstrackerbackend-cx4h.onrender.com/api"
+// const DATABASE_URL = "https://fitnesstrackr.fly.dev/api";
+const DATABASE_URL = "https://fitnesstrackerbackend-cx4h.onrender.com/api"
 
 export const registerAccount = async (username, password) => {
   try {
-    const response = await fetch(`${BASE}/users/register`, {
+    const response = await fetch(`${DATABASE_URL}/users/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -24,7 +24,7 @@ export const registerAccount = async (username, password) => {
 
 export const loginAccount = async (username, password) => {
   try {
-    const response = await fetch(`${BASE}/users/login`, {
+    const response = await fetch(`${DATABASE_URL}/users/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -45,7 +45,7 @@ export const loginAccount = async (username, password) => {
 
 export const getAllRoutines = async () => {
   try {
-    const response = await fetch(`${BASE}/routines`, {
+    const response = await fetch(`${DATABASE_URL}/routines`, {
       headers: {
         "Content-Type": "application/json",
       },
@@ -60,7 +60,7 @@ export const getAllRoutines = async () => {
 
 export const getMyUser = async (token) => {
   try {
-    const response = await fetch(`${BASE}/users/me`, {
+    const response = await fetch(`${DATABASE_URL}/users/me`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
@@ -77,7 +77,7 @@ export const getMyUser = async (token) => {
 
 export const updateRoutine = async (token, isPublic, name, goal, routineId) => {
   try {
-    const response = await fetch(`${BASE}/routines/${routineId}`, {
+    const response = await fetch(`${DATABASE_URL}/routines/${routineId}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -98,7 +98,7 @@ export const updateRoutine = async (token, isPublic, name, goal, routineId) => {
 
 export const deleteRoutine = async (token, routineId) => {
   try {
-    const response = await fetch(`${BASE}/routines/${routineId}`, {
+    const response = await fetch(`${DATABASE_URL}/routines/${routineId}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -115,7 +115,7 @@ export const deleteRoutine = async (token, routineId) => {
 
 export const createRoutine = async (token, name, goal, isPublic) => {
   try {
-    const response = await fetch(`${BASE}/routines`, {
+    const response = await fetch(`${DATABASE_URL}/routines`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -137,7 +137,7 @@ export const createRoutine = async (token, name, goal, isPublic) => {
 
 export async function getAllActivities() {
   try {
-    const response = await fetch(`${BASE}/activities`, {
+    const response = await fetch(`${DATABASE_URL}/activities`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -159,7 +159,7 @@ export async function addActivityToRoutine(
   duration
 ) {
   try {
-    const response = await fetch(`${BASE}/routines/${routineId}/activities`, {
+    const response = await fetch(`${DATABASE_URL}/routines/${routineId}/activities`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -181,7 +181,7 @@ export async function addActivityToRoutine(
 export async function deleteActivityFromRoutine(token, routineActivityId) {
   try {
     const response = await fetch(
-      `${BASE}/routine_activities/${routineActivityId}`,
+      `${DATABASE_URL}/routine_activities/${routineActivityId}`,
       {
         method: "DELETE",
         headers: {
@@ -205,7 +205,7 @@ export const updateRoutineActivity = async (
 ) => {
   try {
     const response = await fetch(
-      `${BASE}/routine_activities/${routineActivityId}`,
+      `${DATABASE_URL}/routine_activities/${routineActivityId}`,
       {
         method: "PATCH",
         headers: {
@@ -229,7 +229,7 @@ export const updateRoutineActivity = async (
 
 export const createActivity = async (token, name, description) => {
   try {
-    const response = await fetch(`${BASE}/activities`, {
+    const response = await fetch(`${DATABASE_URL}/activities`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -250,7 +250,7 @@ export const createActivity = async (token, name, description) => {
 
 export const getUsersRoutines = async (username) => {
   try {
-    const response = await fetch(`${BASE}/users/${username}/routines`, {
+    const response = await fetch(`${DATABASE_URL}/users/${username}/routines`, {
       headers: {
         "Content-Type": "application/json",
       },
@@ -263,7 +263,7 @@ export const getUsersRoutines = async (username) => {
 
 export const getRoutinesByActivity = async (activityId) => {
   try {
-    const response = await fetch(`${BASE}/activities/${activityId}/routines`, {
+    const response = await fetch(`${DATABASE_URL}/activities/${activityId}/routines`, {
       headers: {
         "Content-Type": "application/json",
       },
@@ -278,7 +278,7 @@ export const getRoutinesByActivity = async (activityId) => {
 
 export const updateActivity = async (token, activityId, name, description) => {
   try {
-    const response = await fetch(`${BASE}/activities/${activityId}`, {
+    const response = await fetch(`${DATABASE_URL}/activities/${activityId}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
